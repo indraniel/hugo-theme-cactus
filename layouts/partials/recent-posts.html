@@ -1,0 +1,13 @@
+<span class="h2">{{ .sectionTitle }}</span>
+    <ul class="post-list">
+      {{ .context.Scratch.Set "count" 5 }}
+      {{ if isset .context.Site.Params "postsonhomepage" }}
+        {{ .context.Scratch.Set "count" .context.Site.Params.postsOnHomePage }}
+      {{ end }}
+      {{ range $i := (first (.context.Scratch.Get "count") .sectionPosts) }}
+        <li class="post-item">
+          <div class="meta"><time datetime="{{ time $i.Date }}" itemprop="datePublished">{{ $i.Date.Format $.dateFmt }}</time></div>
+          <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
+        </li>
+      {{ end }}
+    </ul>

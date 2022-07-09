@@ -57,6 +57,8 @@
     {{ end }}
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
     {{ $mainPosts := (sort ( where site.RegularPages "Section" "in" site.Params.mainSections ) "Date" "desc") }}
+    {{ $notePosts := (sort ( where site.RegularPages "Section" "in" site.Params.noteSections ) "Date" "desc") }}
+    {{ $essayPosts := (sort ( where site.RegularPages "Section" "in" site.Params.essaySections ) "Date" "desc") }}
     {{ if $showAllPostsOnHomePage }}
     <ul class="post-list">
       {{ range (.Paginate $mainPosts).Pages }}
@@ -70,18 +72,8 @@
     {{ partial "pagination.html" . }}
 
     {{ else }}
-    <ul class="post-list">
-      {{ .Scratch.Set "count" 5 }}
-      {{ if isset .Site.Params "postsonhomepage" }}
-        {{ .Scratch.Set "count" .Site.Params.postsOnHomePage }}
-      {{ end }}
-      {{ range (first (.Scratch.Get "count") $mainPosts) }}
-        <li class="post-item">
-          <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
-          <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
-        </li>
-      {{ end }}
-    </ul>
+    {{ partial "recent-posts.html" (dict "context" . "sectionTitle" "Notes" "sectionPosts" $notePosts "dateFmt" $dataFormat) }}
+    {{ partial "recent-posts.html" (dict "context" . "sectionTitle" "Essays" "sectionPosts" $essayPosts "dateFmt" $dataFormat) }}
     {{ end }}
   </section>
 
