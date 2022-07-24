@@ -8,6 +8,7 @@
         <li class="post-item">
           <div class="meta"><time datetime="{{ time $i.Date }}" itemprop="datePublished">{{ $i.Date.Format $.dateFmt }}</time></div>
           <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
+          {{ if .Draft }} <span class="draft">Draft</span> {{ end }}
         </li>
       {{ end }}
     </ul>

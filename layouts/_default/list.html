@@ -20,6 +20,9 @@
       <span>    
         <a class="" href="{{ .Permalink }}">{{ if .Title }} {{ .Title }} {{ else }} Untitled {{ end }}</a>
       </span>
+      {{ if .Draft }}
+          <span class="draft">Draft</span>
+      {{ end }}
     </li>
     {{ end }}
   </ul>

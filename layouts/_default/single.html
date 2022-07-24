@@ -10,6 +10,7 @@
     <header>
       <h1 class="posttitle" itemprop="name headline">
         {{ .Title }}
+        {{ if .Draft }} <span class="draft">Draft</span> {{ end }}
       </h1>
       <div class="meta">
         {{ if (or (isset .Site "author") (isset .Site "title"))}}

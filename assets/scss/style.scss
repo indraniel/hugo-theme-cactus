@@ -232,3 +232,20 @@ code {
     }
   }
 }
+
+.draft {
+    background-color: $color-bg-draft;
+    border-radius: $spacing-unit / 2;
+    border: 2px solid $color-border-draft;
+
+    color: white;
+    font-size: $font-size-small * 0.89;
+    font-weight: bold;
+
+    text-transform: uppercase;
+    vertical-align: middle;
+
+    padding: 1px $spacing-micro-unit;
+    margin-right: $spacing-unit / 4;
+    margin-left: $spacing-unit / 4;
+}

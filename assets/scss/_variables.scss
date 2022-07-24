@@ -3,6 +3,7 @@ $font-family-body: "JetBrains Mono", monospace;
 $font-family-mono: "Monaco", "Menlo", "Consolas", monospace;
 $font-family-tt: "Inconsolata", monospace;
 $font-size: 15px;
+$font-size-small: $font-size * 0.85;
 $line-height: 1.725;
 $page-width: 48rem;
 // Logo
@@ -12,3 +13,5 @@ $logo-grayout: true;
 // Colors
 $colors: "dark"; // white dark light classic
 $code-block-background-color: #eeeeffd9;
+$spacing-unit: 24px;
+$spacing-micro-unit: 6px;
